@@ -1,6 +1,8 @@
 import * as reduxModule from 'redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { createLogger } from 'redux-logger'
+
 import rootSaga from './sagas';
 import createReducer from './reducers';
 
@@ -12,17 +14,17 @@ reduxModule.__DO_NOT_USE__ActionTypes.REPLACE = '@@redux/INIT';
 
 
 
-const composeEnhancers =
-    process.env.NODE_ENV !== 'production' &&
-    typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-        }) : compose;
+const composeEnhancers = process.env.NODE_ENV !== 'production' &&  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) :
+    compose;
 
 
 const sagaMiddleware = createSagaMiddleware();
-const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
+const logger = createLogger();
+
+const enhancer = process.env.NODE_ENV !== 'production' ? composeEnhancers(applyMiddleware(sagaMiddleware), applyMiddleware(logger)) : composeEnhancers(applyMiddleware(sagaMiddleware));
 
 const store = createStore(createReducer(), enhancer);
 

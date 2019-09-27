@@ -12,7 +12,49 @@ const styles = theme => ({
         fontSize: "16px",
         color: "white",
         fontWeight: 700
-    }
+    },
+    buttonFb: {
+        backgroundColor: '#4c69ba',
+        width: '100%',
+        boxSizing: 'border-box',
+        position: 'relative',
+        border: 'none',
+        lineHeight: '30px',
+        whiteSpace: 'nowrap',
+        borderRadius: 4,
+        fontSize: '14px',
+        color: '#FFF',
+        cursor: 'pointer',
+        padding: '5px',
+        textAlign: 'center',
+        '& svg': {
+            marginRight: 20,
+            verticalAlign: 'middle',
+            width: '25px',
+            height: '25px',
+        },
+    },
+    buttonGG: {
+        backgroundColor: 'rgb(204, 0, 0);',
+        width: '100%',
+        boxSizing: 'border-box',
+        position: 'relative',
+        border: 'none',
+        lineHeight: '30px',
+        whiteSpace: 'nowrap',
+        borderRadius: 4,
+        fontSize: '14px',
+        color: '#FFF',
+        cursor: 'pointer',
+        padding: '5px',
+        textAlign: 'center',
+        '& svg': {
+            marginRight: 20,
+            verticalAlign: 'middle',
+            width: '25px',
+            height: '25px',
+        },
+    },
 });
 
 export default styles;

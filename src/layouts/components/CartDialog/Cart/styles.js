@@ -54,7 +54,11 @@ const styles = theme => ({
         color: theme.palette.medium,
         fontWeight: 700,
         fontSize: "16px"
-    }
+    },
+    cartContent: {
+        height: 450,
+        overflowY: 'auto',
+    },
 });
 
 export default styles;
